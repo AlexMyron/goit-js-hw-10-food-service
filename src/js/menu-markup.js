@@ -1,5 +1,5 @@
 import menuData from '../menu.json';
-import templFunc from '../templates/menu-template.hbs';
+// import templFunc from '../templates/menu-template.hbs';
 // console.log(templFunc);
 // console.log(typeof templFunc);
 
