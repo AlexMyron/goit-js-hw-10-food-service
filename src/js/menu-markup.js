@@ -1,9 +1,7 @@
 import menuData from '../menu.json';
-import templFunc from '../templates/menu-template.hbs';
-console.log(templFunc);
-console.log(typeof templFunc);
+import template from '../templates/menu-template.hbs';
 
-const menuMarkup = templFunc(menuData);
+const menuMarkup = template(menuData);
 
 const menuEl = document.querySelector('.js-menu');
 menuEl.insertAdjacentHTML('beforeend', menuMarkup);
