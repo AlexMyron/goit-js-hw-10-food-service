@@ -17,10 +17,14 @@ function storeBodyTheme() {
   const currentTheme = localStorage.getItem('bodyTheme');
   refs.body.classList.add(currentTheme);
   if (currentTheme === LIGHT) {
-    refs.toggle.checked = false;
+    setToggle(false);
   } else {
-    refs.toggle.checked = true;
+    setToggle(true);
   }
+}
+
+function setToggle(value) {
+  refs.toggle.checked = value;
 }
 
 function themeToggle() {
@@ -28,12 +32,16 @@ function themeToggle() {
 
   if (bodyClass.contains(LIGHT)) {
     bodyClass.replace(LIGHT, DARK);
-    localStorage.setItem('bodyTheme', DARK);
+    setStorageValue(DARK);
   } else if (bodyClass.contains(DARK)) {
     bodyClass.replace(DARK, LIGHT);
-    localStorage.setItem('bodyTheme', LIGHT);
+    setStorageValue(LIGHT);
   } else {
     bodyClass.add(DARK);
-    localStorage.setItem('bodyTheme', DARK);
+    setStorageValue(DARK);
   }
+}
+
+function setStorageValue(theme) {
+  localStorage.setItem('bodyTheme', theme);
 }
