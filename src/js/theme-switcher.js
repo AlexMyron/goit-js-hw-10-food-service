@@ -10,35 +10,29 @@ const Theme = {
 
 const { LIGHT, DARK } = Theme;
 
-refs.toggle.addEventListener('change', themeToggle);
+refs.toggle.addEventListener('change', switchTheme);
 storeBodyTheme();
 
 function storeBodyTheme() {
-  const currentTheme = localStorage.getItem('bodyTheme');
+  const currentTheme = localStorage.getItem('bodyTheme') || LIGHT;
   refs.body.classList.add(currentTheme);
-  if (currentTheme === LIGHT) {
-    setToggle(false);
-  } else {
-    setToggle(true);
-  }
+  setToggle(currentTheme === DARK);
 }
 
 function setToggle(value) {
   refs.toggle.checked = value;
 }
 
-function themeToggle() {
+function switchTheme(e) {
   const bodyClass = refs.body.classList;
+  const lightTheme = e.target.checked;
 
-  if (bodyClass.contains(LIGHT)) {
+  if (lightTheme) {
     bodyClass.replace(LIGHT, DARK);
     setStorageValue(DARK);
-  } else if (bodyClass.contains(DARK)) {
+  } else {
     bodyClass.replace(DARK, LIGHT);
     setStorageValue(LIGHT);
-  } else {
-    bodyClass.add(DARK);
-    setStorageValue(DARK);
   }
 }
 
